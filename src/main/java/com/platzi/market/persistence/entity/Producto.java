@@ -1,5 +1,7 @@
 package com.platzi.market.persistence.entity;
 
+import org.aspectj.weaver.patterns.TypeCategoryTypePattern;
+
 import javax.persistence.*;
 
 @Entity  //Le hara entender a java que esta clase se comportara como una clase que mapea a la BD
@@ -24,6 +26,9 @@ private Double precioVenta;
 @Column(name="cantidad_stock")
 private Integer cantidadStock;
 
+@ManyToOne
+@JoinColumn(name="id_categoria", insertable = false, updatable = false)
+private Categoria categoria;
 private Boolean estado;
 
     public Integer getIdProducto() {
