@@ -4,16 +4,18 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name="categorias")
+@Table(name = "categorias")
 public class Categoria {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_categoria")
+    @Column(name = "id_categoria")
     private Integer idCategoria;
+
     private String descripcion;
     private Boolean estado;
 
-    @OneToMany(mappedBy = "categoria") // relacion entre categoria y productos
+    @OneToMany(mappedBy = "categoria")
     private List<Producto> productos;
 
     public Integer getIdCategoria() {
@@ -38,5 +40,13 @@ public class Categoria {
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public void setProductos(List<Producto> productos) {
+        this.productos = productos;
     }
 }

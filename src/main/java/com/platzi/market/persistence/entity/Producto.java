@@ -1,35 +1,35 @@
 package com.platzi.market.persistence.entity;
 
-import org.aspectj.weaver.patterns.TypeCategoryTypePattern;
-
 import javax.persistence.*;
 
-@Entity  //Le hara entender a java que esta clase se comportara como una clase que mapea a la BD
-@Table(name="productos")
+@Entity
+@Table(name = "productos")
 public class Producto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id_producto") // siempre que se llame diferente en la clase , se pone aca el nombre de que esta en BD
+    @Column(name = "id_producto")
     private Integer idProducto;
 
-private String nombre;
+    private String nombre;
 
-@Column(name="id_categotia")
-private Integer idCategoria;
+    @Column(name = "id_categoria")
+    private Integer idCategoria;
 
-@Column(name="codigo_barras")
-private  String codigoBarras;
+    @Column(name = "codigo_barras")
+    private String codigoBarras;
 
-@Column(name="precio_venta")
-private Double precioVenta;
+    @Column(name = "precio_venta")
+    private Double precioVenta;
 
-@Column(name="cantidad_stock")
-private Integer cantidadStock;
+    @Column(name = "cantidad_stock")
+    private Integer cantidadStock;
 
-@ManyToOne
-@JoinColumn(name="id_categoria", insertable = false, updatable = false)
-private Categoria categoria;
-private Boolean estado;
+    private Boolean estado;
+
+    @ManyToOne
+    @JoinColumn(name = "id_categoria", insertable = false, updatable = false)
+    private Categoria categoria;
 
     public Integer getIdProducto() {
         return idProducto;
@@ -85,5 +85,13 @@ private Boolean estado;
 
     public void setEstado(Boolean estado) {
         this.estado = estado;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 }
